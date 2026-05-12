@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --colour-background: #f9f9f9;
+  --color-background: #f9f9f9;
   --color-foreground: #111111;
 
   --color-card: #ffffff;
@@ -29,7 +29,7 @@
   }
 
   body {
-    background-color: var(--colour-background);
+    background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: 'Inter', sans-serif;
   }
@@ -43,13 +43,13 @@
   .glass {
     background-color: color-mix(in srgb, var(--color-surface) 50%, transparent);
     backdrop-filter: blur(16px);
-    border: 1px solid colour-mix(in srgb, var(--color-border) 50%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
   }
 
   .glass-strong {
     background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
     backdrop-filter: blur(24px);
-    border: 1px solid colour-mix(in srgb, var(--color-border) 60%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
   }
 }
 
@@ -68,5 +68,28 @@
 
   .animate-fade-in {
     animation: fade-in 0.8s ease-out both;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 28s linear infinite;
+  }
+
+  @keyframes spin-slow {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
   }
 }

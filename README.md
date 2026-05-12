@@ -1,12 +1,11 @@
-# React + TypeScript + Vite
-test
+# Welcome to my portfolio codebase!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This portfolio website was built after watching the following tutorial :
+https://www.youtube.com/watch?v=cIYdiRDFWQw
 
-Currently, two official plugins are available:
+Using the following codebase as reference:
+https://github.com/machadop1407/react-tailwind-personal-portfolio
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 ## `src` layout
 
