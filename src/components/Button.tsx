@@ -3,6 +3,7 @@ type ButtonSize = "sm" | "default" | "lg"
 type ButtonProps = {
   className?: string
   size?: ButtonSize
+  variant?: "primary" | "accent"
   children: React.ReactNode
   href?: string
   type?: "button" | "submit" | "reset"
@@ -14,6 +15,7 @@ type ButtonProps = {
 export const Button = ({
   className = "",
   size = "default",
+  variant = "primary",
   children,
   href,
   type = "button",
@@ -21,8 +23,13 @@ export const Button = ({
   rel,
   onClick,
 }: ButtonProps) => {
+  const variantClasses =
+    variant === "accent"
+      ? "bg-accent-blue-dark text-white shadow-md hover:bg-accent-blue-hover hover:shadow-lg focus-visible:ring-accent-blue-dark"
+      : "bg-primary text-foreground hover:bg-primary/80 hover:shadow-lg hover:shadow-primary/30 focus-visible:ring-primary"
+
   const baseClasses =
-    "relative inline-flex overflow-hidden rounded-full font-medium transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 bg-primary text-foreground hover:bg-primary/80 hover:shadow-lg hover:shadow-primary/30"
+    `relative inline-flex overflow-hidden rounded-full font-medium transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${variantClasses}`.trim()
 
   const sizeClasses = {
     sm: "px-4 py-2 text-sm",

@@ -38,7 +38,7 @@ export const Hero = () => {
       id="hero"
       className="relative flex min-h-screen items-center overflow-hidden pt-24"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,var(--color-primary)_0,transparent_28%),linear-gradient(135deg,var(--color-background)_0%,var(--color-surface)_48%,var(--color-background)_100%)]" />
+      <div className="hero-gradient absolute inset-0" />
       <div className="absolute inset-0 bg-[linear-gradient(var(--color-border)_1px,transparent_1px),linear-gradient(90deg,var(--color-border)_1px,transparent_1px)] bg-[size:72px_72px] opacity-30" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
 
@@ -46,16 +46,16 @@ export const Hero = () => {
         <div className="grid items-center gap-14 lg:grid-cols-2">
           <div className="space-y-8">
             <div className="animate-fade-in">
-              <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm text-foreground">
-                <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
-                Software Engineer / AI Operations Engineer
+              <span className="inline-flex items-center gap-2 rounded-full border border-[rgba(26,26,26,0.2)] bg-muted px-4 py-2 text-sm font-medium text-foreground">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-accent-blue-dark" />
+                Software Engineer / Data & Platform Engineer
               </span>
             </div>
 
             <div className="space-y-6">
-              <h1 className="max-w-4xl font-serif text-5xl leading-[0.95] tracking-tight text-foreground md:text-7xl lg:text-8xl">
+              <h1 className="max-w-4xl font-serif text-5xl leading-[0.95] tracking-tight text-headline md:text-7xl lg:text-8xl">
                 Building calm
-                <span className="block text-highlight">software systems</span>
+                <span className="block">software systems</span>
                 for ambitious teams.
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-muted-foreground md:text-xl">
@@ -110,19 +110,13 @@ export const Hero = () => {
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-[2rem] border border-border bg-card p-6 shadow-2xl">
-              <div className="aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-highlight via-foreground to-muted">
-                <div className="flex h-full flex-col items-center justify-center gap-6 p-10 text-center text-primary-foreground">
-                  <div className="flex h-32 w-32 items-center justify-center rounded-full border border-primary/40 bg-primary/15 text-5xl font-bold tracking-tight text-primary">
-                    DC
-                  </div>
-                  <div>
-                    <p className="font-serif text-4xl">Dylan Crawte</p>
-                    <p className="mt-3 text-sm uppercase tracking-[0.3em] text-primary">
-                      AI Operations
-                    </p>
-                  </div>
-                </div>
+            <div className="relative overflow-hidden rounded-[2rem] border border-border bg-photo-panel p-6 shadow-2xl">
+              <div className="aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-surface">
+                <img
+                  src="/headshot.JPG"
+                  alt="Dylan Crawte"
+                  className="h-full w-full object-cover"
+                />
               </div>
             </div>
 
@@ -161,7 +155,6 @@ export const Hero = () => {
         href="#about"
         className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground md:flex"
       >
-        Scroll
         <ChevronDown size={20} className="animate-bounce" />
       </a>
     </section>

@@ -1,26 +1,35 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #f9f9f9;
-  --color-foreground: #111111;
+  --color-background: #f9f9f9; /* off-white */
+  --color-foreground: #111111; /* near-black */
 
-  --color-card: #ffffff;
+  --color-card: #ffffff; /* white */
 
-  --color-primary: #ACFBFF;
-  --color-primary-foreground: #ffffff;
+  --color-primary: #ACFBFF; /* pale cyan */
+  --color-primary-foreground: #ffffff; /* white */
 
-  --color-secondary: #f0f0f0;
-  --color-secondary-foreground: #111111;
+  --color-accent-blue-light: #ACFBFF; /* pale cyan-blue */
+  --color-accent-blue-mid: #7DE7FF; /* light sky blue */
+  --color-accent-blue-hover: #47c9f4; /* bright blue hover */
+  --color-accent-blue-dark: #167fc3; /* dark blue */
 
-  --color-muted: #e8e8e8;
-  --color-muted-foreground: #777777;
+  --color-secondary: #f0f0f0; /* very light gray */
+  --color-secondary-foreground: #111111; /* near-black */
 
-  --color-border: #e0e0e0;
+  --color-muted: #e8e8e8; /* light gray */
+  --color-muted-foreground: #777777; /* medium gray */
+
+  --color-border: #e0e0e0; /* light gray */
 
   --radius: 0.75rem;
 
-  --color-highlight: #1a1a1a;
-  --color-surface: #f4f4f4;
+  --color-highlight: #1a1a1a; /* near-black, slightly lifted */
+  --color-surface: #f4f4f4; /* very light gray */
+
+  /* Richer blacks & accent surfaces */
+  --color-headline: #0a0a0a; /* off-black for display type */
+  --color-photo-panel: #f7f6f4; /* warm barely-tinted frame for photos */
 }
 
 @layer base {
@@ -40,6 +49,17 @@
 }
 
 @layer components {
+  /* Cyan anchored top-left; fades to pure white by ~32% width for clean copy column */
+  .hero-gradient {
+    background: radial-gradient(
+      ellipse 115% 100% at -3% 6%,
+      var(--color-primary) 0%,
+      color-mix(in srgb, var(--color-primary) 28%, white) 11%,
+      #ffffff 32%,
+      #ffffff 100%
+    );
+  }
+
   .glass {
     background-color: color-mix(in srgb, var(--color-surface) 50%, transparent);
     backdrop-filter: blur(16px);
