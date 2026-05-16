@@ -1,34 +1,44 @@
 import {
   ArrowRight,
-  Bot,
+  Briefcase,
   ChevronDown,
-  Code2,
   Download,
   Sparkles,
-  Users,
 } from "lucide-react"
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton"
 import { Button } from "../components/Button"
+import { GitHubIcon, LinkedInIcon } from "../components/icons/SocialIcons"
 
 const skills = [
+  "Python",
+  "Pytorch",
+  "SQL",
+  "MatLab",
+  "AWS",
+  "Bedrock",
+  "Terraform",
   "React",
   "TypeScript",
   "Tailwind CSS",
   "Node.js",
-  "Automation",
-  "AI Ops",
-  "Cloud Workflows",
-  "CI/CD",
-  "Prompt Engineering",
-  "Observability",
+  "Ansible"
 ]
 
+// const tools = [
+//   "Jira",
+//   "Confluence",
+//   "Github",
+//   "Cusor IDE",
+//   'Claude Code',
+
+// ]
+
 const socialLinks = [
-  { href: "https://github.com/dylancrawte", label: "GitHub", icon: Code2 },
+  { href: "https://github.com/dylancrawte", label: "GitHub", icon: GitHubIcon },
   {
-    href: "https://www.linkedin.com/in/dylancrawte",
+    href: "https://www.linkedin.com/in/dylan-crawte-681324225/",
     label: "LinkedIn",
-    icon: Users,
+    icon: LinkedInIcon,
   },
 ]
 
@@ -36,7 +46,7 @@ export const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden pt-24"
+      className="relative flex min-h-screen items-center overflow-hidden pt-7"
     >
       <div className="hero-gradient absolute inset-0" />
       <div className="absolute inset-0 bg-[linear-gradient(var(--color-border)_1px,transparent_1px),linear-gradient(90deg,var(--color-border)_1px,transparent_1px)] bg-[size:72px_72px] opacity-30" />
@@ -44,28 +54,28 @@ export const Hero = () => {
 
       <div className="container relative z-10 mx-auto px-6 pb-20 pt-20">
         <div className="grid items-center gap-14 lg:grid-cols-2">
-          <div className="space-y-8">
+          <div className="space-y-10">
             <div className="animate-fade-in">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[rgba(26,26,26,0.2)] bg-muted px-4 py-2 text-sm font-medium text-foreground">
-                <span className="h-2 w-2 animate-pulse rounded-full bg-accent-blue-dark" />
-                Software Engineer / Data & Platform Engineer
+              <span className="mb-6 inline-flex cursor-pointer items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-green-500 hover:text-green-600">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
+                Available for Work
               </span>
-            </div>
-
-            <div className="space-y-6">
+              <div className="space-y-6">
               <h1 className="max-w-4xl font-serif text-5xl leading-[0.95] tracking-tight text-headline md:text-7xl lg:text-8xl">
-                Building calm
-                <span className="block">software systems</span>
-                for ambitious teams.
+                Dylan Crawte
+              </h1>
+              <h1 className="max-w-4xl font-serif text-5xl leading-[1.1] tracking-tight text-headline md:text-4xl lg:text-4xl">
+                AI Engineering. Computational Neuroscience. Mobile & Web Development
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-muted-foreground md:text-xl">
-                I help teams turn messy workflows into reliable products,
-                automation, and AI operations systems that are simple to run
-                and easy to improve.
+                Passionate about building intuitive systems that solve real world problems.
               </p>
             </div>
+            </div>
 
-            <div className="flex flex-col gap-4 sm:flex-row">
+            
+
+            <div className="animate-fade-in-delayed flex flex-col gap-4 sm:flex-row">
               <Button href="#contact" size="lg">
                 Contact Me
                 <ArrowRight size={20} />
@@ -76,7 +86,7 @@ export const Hero = () => {
               </AnimatedBorderButton>
             </div>
 
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+            <div className="animate-fade-in-delayed flex items-center gap-4 text-sm text-muted-foreground">
               <span>Follow me:</span>
               {socialLinks.map((social) => {
                 const Icon = social.icon
@@ -103,9 +113,6 @@ export const Hero = () => {
                 <Sparkles className="text-primary" size={22} />
                 <div>
                   <p className="text-sm font-semibold">Available for work</p>
-                  <p className="text-xs text-muted-foreground">
-                    Freelance and full-time roles
-                  </p>
                 </div>
               </div>
             </div>
@@ -113,7 +120,7 @@ export const Hero = () => {
             <div className="relative overflow-hidden rounded-[2rem] border border-border bg-photo-panel p-6 shadow-2xl">
               <div className="aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-surface">
                 <img
-                  src="/headshot.JPG"
+                  src="/hero-headshot.webp"
                   alt="Dylan Crawte"
                   className="h-full w-full object-cover"
                 />
@@ -122,11 +129,11 @@ export const Hero = () => {
 
             <div className="absolute -bottom-8 right-4 rounded-2xl glass-strong px-5 py-4 shadow-xl">
               <div className="flex items-center gap-3">
-                <Bot className="text-primary" size={24} />
+                <Briefcase className="text-accent-blue-mid" size={24} />
                 <div>
-                  <p className="text-2xl font-bold">10+</p>
+                  <p className="text-2xl font-bold">4+</p>
                   <p className="text-xs text-muted-foreground">
-                    workflows automated
+                    years experience
                   </p>
                 </div>
               </div>
@@ -142,7 +149,7 @@ export const Hero = () => {
             {[...skills, ...skills].map((skill, index) => (
               <span
                 key={`${skill}-${index}`}
-                className="rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted-foreground"
+                className="rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-primary hover:bg-primary hover:text-background"
               >
                 {skill}
               </span>

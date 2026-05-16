@@ -6,45 +6,88 @@ type ExperienceItem = {
   period: string
   description: string
   achievements: string[]
+  technologies?: string[]
 }
 
 const experiences: ExperienceItem[] = [
   {
     role: "AI Operations Engineer",
-    company: "Automation and product teams",
-    period: "Current focus",
+    company: "International Airlines Group",
+    period: "Aug 2025 - Present",
     description:
-      "Designing workflows that combine software, AI tools, and human review into reliable day-to-day operations.",
+      "Designing and maintaining platforms to support the Cognitive Automation Factory (CAF) and UiPath automation platforms at IAG, British Airways, Vueling and more.",
     achievements: [
-      "Built repeatable processes for routing, summarising, and actioning operational work.",
+      "Building & Maintaining Network and Compute Infrastructure",
       "Created guardrails around AI-assisted outputs so teams can move faster without losing quality.",
       "Connected product, support, and delivery workflows with clear handoffs and reporting.",
     ],
+    technologies: ["AWS", "UiPath", "Python", "Terraform", "Bedrock"],
   },
   {
     role: "Software Engineer",
-    company: "Frontend and full-stack projects",
-    period: "Recent work",
+    company: "International Airlines Group",
+    period: "Aug 2024 - Aug 2025",
     description:
-      "Delivering responsive interfaces, internal tools, and production-ready features with React and TypeScript.",
+      "Building pipelines to turn millions of events and data points into detailed actionable insights, for internal metrics dashboards.",
     achievements: [
       "Developed accessible, reusable UI patterns for customer-facing and internal products.",
       "Improved maintainability by simplifying state, component boundaries, and deployment paths.",
       "Worked across design, data, and engineering conversations to keep implementation grounded in user needs.",
     ],
+    technologies: ["TypeScript", "SQL", "Python", "Node.js", "AWS"],
   },
   {
-    role: "Technical Problem Solver",
-    company: "Cross-functional delivery",
+    role: "Freelance Mobile & Web Developer",
+    company: "Self-employed",
     period: "Ongoing",
     description:
-      "Turning ambiguous operational problems into clear systems, documentation, and measurable next steps.",
+      "Outside of work I am a freelance mobile and web developer, building custom software solutions for businesses. See my projects below.",
     achievements: [
-      "Mapped manual processes into lightweight tools and automations.",
-      "Introduced clearer feedback loops for issue tracking and operational decisions.",
-      "Balanced fast iteration with stable foundations for future improvements.",
+      "Built a custom software solution for a client.",
+      "Implemented a custom software solution for a client.",
+      "Implemented a custom software solution for a client.",
     ],
+    technologies: ["React", "TypeScript", "SQL", "Python", "Node.js"],
   },
+  {
+    role: "Co-founder & Product Owner",
+    company: "Go43 Ltd",
+    period: "March 2025 - Dec 2025",
+    description:
+      "Co-founded Go43 Ltd, a digital marketing agency that gives social media influencers free access to live music events in exchange for content of the night.",
+    achievements: [
+      "Developed a custom software solution for a client.",
+      "Implemented a custom software solution for a client.",
+      "Implemented a custom software solution for a client.",
+    ],
+    technologies: ["React", "TypeScript", "SQL", "Python", "Node.js"],
+  },
+  {
+    role: "Peer Review Manager",
+    company: "Editorial Office / British Medical Journal",
+    period: "Oct 2021 - Apr 2024",
+    description:
+      "Peer reviewed medical research papers for the British Medical Journal, one of the world's leading medical journals.",
+    achievements: [
+      "Developed a custom software solution for a client.",
+      "Implemented a custom software solution for a client.",
+      "Implemented a custom software solution for a client.",
+    ]
+  },
+  {
+    role: "EEG Research",
+    company: "University of Bristol",
+    period: "Aug 2022 - July 2023",
+    description: 
+      "Postgraduate research in Brain Computer Interfaces (BCI), EEG and Dystonia.",
+    achievements: [
+      "Developed a custom software solution for a client.",
+      "Implemented a custom software solution for a client.",
+      "Implemented a custom software solution for a client.",
+    ],
+    technologies: ["React", "TypeScript", "SQL", "Python", "Node.js"],
+  },
+  
 ]
 
 export function Experience() {
@@ -56,12 +99,9 @@ export function Experience() {
             Experience
           </span>
           <h2 className="mt-4 font-serif text-4xl tracking-tight text-foreground md:text-6xl">
-            A practical mix of software, systems, and operations.
+            My professional journey.
           </h2>
-          <p className="mt-5 text-lg leading-8 text-muted-foreground">
-            My work sits between engineering craft and operational clarity:
-            build the thing, make it understandable, and keep it dependable.
-          </p>
+          
         </div>
 
         <div className="mx-auto mt-16 max-w-5xl">
@@ -102,6 +142,17 @@ export function Experience() {
                     </li>
                   ))}
                 </ul>
+
+                <div className="flex flex-wrap gap-2 border-t border-border pt-6 md:col-span-2">
+                  {item.technologies?.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-border bg-surface px-3 py-1 text-sm text-muted-foreground transition-colors hover:border-primary hover:bg-primary hover:text-foreground"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </article>
             ))}
           </div>

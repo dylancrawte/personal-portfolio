@@ -1,29 +1,29 @@
-import { Code2, Lightbulb, Rocket, Users } from "lucide-react"
+import { PlaneIcon, Lightbulb, GraduationCapIcon, CloudIcon } from "lucide-react"
 
 const highlights = [
   {
-    icon: Code2,
-    title: "Product-minded code",
+    icon: PlaneIcon,
+    title: "Industry AI Engineering",
     description:
-      "I focus on reliable interfaces, clear state, and features that are easy for teams to maintain.",
+      "Exposure to cutting edge AI labs in the aviation industry, building and shipping AI solutions for real world problems.",
   },
   {
-    icon: Rocket,
-    title: "Operational speed",
+    icon: CloudIcon,
+    title: "Cloud Based Infrastructure",
     description:
-      "I build automations and workflows that remove repetitive work and make delivery feel lighter.",
+      "Experience with AWS and Terraform, with a strong understanding of cloud based infrastructure for real production systems.",
   },
   {
-    icon: Users,
-    title: "Collaborative delivery",
+    icon: GraduationCapIcon,
+    title: "MSc Neuroscience",
     description:
-      "I work closely with stakeholders, designers, and engineers to turn loose ideas into shipped outcomes.",
+      "BCI research, and industry experience with the British Medical Journal",
   },
   {
     icon: Lightbulb,
-    title: "AI systems thinking",
+    title: "Product Minded",
     description:
-      "I connect AI tools to practical business processes with guardrails, monitoring, and human review.",
+      "Ownership of projects outside of work, utilising management tools to oversee end to end delivery.",
   },
 ]
 
@@ -36,32 +36,22 @@ export function About() {
             <span className="text-sm font-semibold uppercase tracking-[0.3em] text-muted-foreground">
               About Me
             </span>
-            <h2 className="font-serif text-4xl leading-tight tracking-tight text-foreground md:text-6xl">
-              Building useful systems, one careful decision at a time.
+            <h2 className="pt-5 font-serif text-4xl leading-tight tracking-tight text-foreground md:text-5xl xl:text-6xl">
+              <span className="inline-flex items-center gap-2 whitespace-nowrap md:gap-3">
+                Building systems that fly.
+               
+              </span>
             </h2>
-            <div className="space-y-5 text-lg leading-8 text-muted-foreground">
-              <p>
-                I am Dylan Crawte, a software engineer focused on React,
-                TypeScript, automation, and AI operations. I like the space
-                where clean product experiences meet dependable internal
-                systems.
-              </p>
-              <p>
-                My work is shaped by a practical question: what would make this
-                easier to use, easier to run, and easier to improve next month?
-                That lens guides everything from frontend details to workflow
-                automation and AI-assisted tooling.
-              </p>
-              <p>
-                I enjoy working with teams that value clarity, iteration, and
-                well-crafted software that solves real problems.
-              </p>
+            <div className="overflow-hidden rounded-3xl border border-border bg-photo-panel p-3 shadow-lg">
+              <img
+                src="/about-photo.webp"
+                alt="Dylan Crawte"
+                className="w-full rounded-2xl object-cover"
+              />
             </div>
 
             <blockquote className="rounded-3xl border-l-4 border-primary bg-surface p-6 text-lg italic leading-8 text-foreground">
-              "My goal is to build technology that feels calm in production:
-              clear for users, maintainable for developers, and useful for the
-              teams who rely on it."
+              "I am keen to utilise my skills in AI and technology learnt from the aviation industry, into a role that combines my background and passion for Neuroscience"
             </blockquote>
           </div>
 
