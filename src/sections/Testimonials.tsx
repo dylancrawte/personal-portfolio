@@ -4,14 +4,16 @@ type Testimonial = {
   quote: string
   name: string
   role: string
+  email?: string
 }
 
 const testimonials: Testimonial[] = [
   {
     quote:
-      "Dylan has a strong instinct for turning a vague operational problem into a clean, practical system the team can actually use.",
-    name: "Product collaborator",
-    role: "Workflow automation project",
+      "It is a real pleasure to work with Dylan as he brings our company's vision to life. With clear communication, honesty and great timekeeping, the entire process has been (and continues to be) professional and stress-free",
+    name: "Russel Phillips",
+    role: "Sonar Presents",
+    email: "russell@sonarpresents.com",
   },
   {
     quote:
@@ -36,12 +38,8 @@ export function Testimonials() {
             Testimonials
           </span>
           <h2 className="mt-4 font-serif text-4xl tracking-tight text-foreground md:text-6xl">
-            Clear thinking, careful delivery.
+            Feedback, from clients and colleagues.
           </h2>
-          <p className="mt-5 text-lg leading-8 text-muted-foreground">
-            Feedback themes from collaborative product, engineering, and
-            operations work.
-          </p>
         </div>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">

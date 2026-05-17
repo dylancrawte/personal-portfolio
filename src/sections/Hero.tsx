@@ -9,29 +9,8 @@ import { AnimatedBorderButton } from "../components/AnimatedBorderButton"
 import { Button } from "../components/Button"
 import { GitHubIcon, LinkedInIcon } from "../components/icons/SocialIcons"
 
-const skills = [
-  "Python",
-  "Pytorch",
-  "SQL",
-  "MatLab",
-  "AWS",
-  "Bedrock",
-  "Terraform",
-  "React",
-  "TypeScript",
-  "Tailwind CSS",
-  "Node.js",
-  "Ansible"
-]
-
-// const tools = [
-//   "Jira",
-//   "Confluence",
-//   "Github",
-//   "Cusor IDE",
-//   'Claude Code',
-
-// ]
+import { LogoMarquee } from "../components/LogoMarquee"
+import { technologies, tools } from "../data/techStack"
 
 const socialLinks = [
   { href: "https://github.com/dylancrawte", label: "GitHub", icon: GitHubIcon },
@@ -108,16 +87,14 @@ export const Hero = () => {
           </div>
 
           <div className="relative mx-auto w-full max-w-lg">
-            <div className="absolute -left-8 top-10 hidden rounded-2xl glass px-5 py-4 shadow-xl md:block">
+            <div className="animate-fade-in absolute -left-8 top-10 hidden rounded-2xl glass px-5 py-4 shadow-xl md:block">
               <div className="flex items-center gap-3">
                 <Sparkles className="text-primary" size={22} />
-                <div>
-                  <p className="text-sm font-semibold">Available for work</p>
-                </div>
+                
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-[2rem] border border-border bg-photo-panel p-6 shadow-2xl">
+            <div className="animate-slide-in-right relative overflow-hidden rounded-[2rem] border border-border bg-photo-panel p-6 shadow-2xl">
               <div className="aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-surface">
                 <img
                   src="/hero-headshot.webp"
@@ -127,7 +104,7 @@ export const Hero = () => {
               </div>
             </div>
 
-            <div className="absolute -bottom-8 right-4 rounded-2xl glass-strong px-5 py-4 shadow-xl">
+            <div className="animate-fade-in absolute -bottom-8 right-4 rounded-2xl glass-strong px-5 py-4 shadow-xl">
               <div className="flex items-center gap-3">
                 <Briefcase className="text-accent-blue-mid" size={24} />
                 <div>
@@ -141,19 +118,30 @@ export const Hero = () => {
           </div>
         </div>
 
-        <div className="mt-20 overflow-hidden rounded-full border border-border bg-card/80 py-4">
-          <p className="mb-3 text-center text-sm text-muted-foreground">
-            Technologies I work with
-          </p>
-          <div className="flex w-max animate-marquee gap-3">
-            {[...skills, ...skills].map((skill, index) => (
-              <span
-                key={`${skill}-${index}`}
-                className="rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-primary hover:bg-primary hover:text-background"
-              >
-                {skill}
-              </span>
-            ))}
+        <div className="mt-20 rounded-2xl border border-border bg-card/60 px-4 py-8 sm:px-6">
+          <div className="mb-8 text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+              Stack
+            </p>
+            <h2 className="mt-2 font-serif text-2xl tracking-tight text-foreground md:text-3xl">
+              Technologies & tools
+            </h2>
+          </div>
+
+          <div className="space-y-8">
+            <div>
+              <p className="mb-3 text-center text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                Technologies
+              </p>
+              <LogoMarquee items={technologies} direction="left" />
+            </div>
+
+            <div>
+              <p className="mb-3 text-center text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                Tools
+              </p>
+              <LogoMarquee items={tools} direction="right" />
+            </div>
           </div>
         </div>
       </div>

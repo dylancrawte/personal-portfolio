@@ -1,6 +1,29 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, type ReactNode } from "react"
 import { ArrowUpRight, Layers3, X } from "lucide-react"
 import { GitHubIcon } from "../components/icons/SocialIcons"
+import { useInView } from "../hooks/useInView"
+
+function ProjectsReveal({
+  children,
+  className = "",
+  delayMs = 0,
+}: {
+  children: ReactNode
+  className?: string
+  delayMs?: number
+}) {
+  const { ref, isVisible } = useInView<HTMLDivElement>()
+
+  return (
+    <div
+      ref={ref}
+      style={{ animationDelay: `${delayMs}ms` }}
+      className={`about-reveal ${className} ${isVisible ? "is-visible" : ""}`}
+    >
+      {children}
+    </div>
+  )
+}
 
 type Project = {
   title: string
@@ -9,7 +32,7 @@ type Project = {
   liveHref?: string
   demoVideo?: string
   appStoreHref?: string
-  codeHref: string
+  codeHref?: string
   image?: string
   /** Use "contain" to show the full image without cropping (e.g. diagrams). */
   imageFit?: "cover" | "contain"
@@ -20,7 +43,7 @@ const projects: Project[] = [
     title: "Go43 (Go-For-Free)",
     summary:
       "A digital marketing agency that gives social media influencers free access to live music events in exchange for content of the night.",
-    tags: ["React", "TypeScript", "Node.js", "Expo"],
+    tags: ["React Native", "TypeScript", "Node.js", "Expo", "Express", "MongoDB"],
     liveHref: "https://www.go43.co.uk/",
     demoVideo: "/projects/go43-demo.mp4",
     appStoreHref: "https://apps.apple.com/gb/app/go43/id6748952122",
@@ -31,16 +54,24 @@ const projects: Project[] = [
     title: "Sonar Presents",
     summary:
       "A mobile platform for the UK's grassroots music scene, allowing artists to share their music with a wider audience.",
-    tags: ["React Native", "TypeScript", "Node.js", "Expo"],
+    tags: ["React Native", "TypeScript", "Node.js", "Expo", "Express", "MongoDB"],
     liveHref: "#contact",
     demoVideo: "/projects/sonar-recording.MP4",
     codeHref: "https://github.com/dylancrawte/sonar-presents",
     image: "/projects/ios_appstore.png",
   },
   {
+    title: "Dystonia & EEG Project",
+    summary:
+      "My Postgraduate Research Project, investigating a novel vibrotactile stimulation treatment for the motor-neurone disease Dystonia.",
+    tags: ["Python", "MatLab"],
+    liveHref: "https://docs.google.com/document/d/1aQYzz2IorrR8ID_A65q7HJQEpLXdgpDm/edit?usp=drive_link&ouid=102871082817885578561&rtpof=true&sd=true",
+    image: "/projects/eeg-dylan.png",
+  },
+  {
     title: "Neuro Imager",
     summary:
-      "An open source tool for reproducing and exploring cortical brain maps from published datasets ",
+      "An open source tool for exploring cortical brain maps. It includes the tools to map data from the Human Connectome Project (HCP) and other datasets, and includes some studies I have investigated into!",
     tags: ["Python", "MatLab"],
     liveHref: "https://github.com/dylancrawte/Neuro-Imager/blob/main/README.md",
     codeHref: "https://github.com/dylancrawte/Neuro-Imager/blob/main/README.md",
@@ -48,20 +79,30 @@ const projects: Project[] = [
     imageFit: "cover",
   },
   {
+    title: "Machine Learning notebooks",
+    summary:
+      "A collection of machine learning notebooks I have completed from tutorials and created by myself.",
+    tags: ["Python"],
+    liveHref: "https://github.com/dylancrawte/Machine-Learning",
+    codeHref: "https://github.com/dylancrawte/Machine-Learning",
+    image: "/projects/premium_photo.avif",
+    imageFit: "cover",
+  },
+  {
     title: "Music Portfolio",
     summary:
       "My website for my music project.",
-    tags: ["React", "Tailwind CSS", "Vite", "Design"],
+    tags: ["React", "Tailwind CSS", "Vite"],
     liveHref: "https://crawta.vercel.app/",
     codeHref: "https://github.com/dylancrawte/crawta",
     image: "/projects/music-portfolio.JPG",
   },
   {
-    title: "Personal Portfolio System",
+    title: "This website",
     summary:
-      "This site: a fast, responsive portfolio built with React, TypeScript, and Tailwind CSS v4.",
-    tags: ["React", "Tailwind CSS", "Vite", "Design"],
-    liveHref: "#hero",
+      "This site was built with React, TypeScript, and Tailwind CSS v4.",
+    tags: ["React", "Tailwind CSS", "Vite", "TypeScript"],
+    liveHref: "https://github.com/dylancrawte/personal-portfolio",
     codeHref: "https://github.com/dylancrawte/personal-portfolio",
   },
 ]
@@ -70,9 +111,32 @@ function isExternalHref(href: string) {
   return href.startsWith("http")
 }
 
+function openViewProject(
+  project: Project,
+  setActiveVideo: (src: string) => void,
+) {
+  if (project.demoVideo) {
+    setActiveVideo(project.demoVideo)
+    return
+  }
+
+  if (!project.liveHref) return
+
+  if (isExternalHref(project.liveHref)) {
+    window.open(project.liveHref, "_blank", "noopener,noreferrer")
+  } else {
+    window.location.href = project.liveHref
+  }
+}
+
+function canViewProject(project: Project) {
+  return Boolean(project.demoVideo || project.liveHref)
+}
+
 export function Projects() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const { ref: gridRef, isVisible: gridVisible } = useInView<HTMLDivElement>()
 
   useEffect(() => {
     if (!activeVideo) return
@@ -103,26 +167,45 @@ export function Projects() {
       <div className="container mx-auto px-6">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
-            <span className="text-sm font-semibold uppercase tracking-[0.3em] text-muted-foreground">
-              Projects
-            </span>
-            <h2 className="mt-4 font-serif text-4xl tracking-tight text-foreground md:text-6xl">
-              Personal projects outside of work.
-            </h2>
+            <ProjectsReveal>
+              <span className="text-sm font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+                Projects
+              </span>
+            </ProjectsReveal>
+            <ProjectsReveal delayMs={80}>
+              <h2 className="mt-4 font-serif text-4xl tracking-tight text-foreground md:text-6xl">
+                Personal projects, outside of work.
+              </h2>
+            </ProjectsReveal>
           </div>
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <div ref={gridRef} className="mt-14 grid gap-6 lg:grid-cols-3">
           {projects.map((project) => {
             const showVisitSite =
               project.demoVideo &&
               project.liveHref &&
               isExternalHref(project.liveHref)
 
+            const viewProject = () => openViewProject(project, setActiveVideo)
+
             return (
               <article
                 key={project.title}
-                className="group overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                role={canViewProject(project) ? "button" : undefined}
+                tabIndex={canViewProject(project) ? 0 : undefined}
+                onClick={canViewProject(project) ? viewProject : undefined}
+                onKeyDown={
+                  canViewProject(project)
+                    ? (event) => {
+                        if (event.key === "Enter" || event.key === " ") {
+                          event.preventDefault()
+                          viewProject()
+                        }
+                      }
+                    : undefined
+                }
+                className={`about-reveal group cursor-pointer overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${gridVisible ? "is-visible" : ""}`}
               >
                 <div
                   className={`relative aspect-[4/3] overflow-hidden bg-surface ${project.imageFit === "contain" ? "bg-background" : ""}`}
@@ -171,34 +254,29 @@ export function Projects() {
                     ))}
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-3 pt-2">
+                  <div
+                    className="flex flex-wrap items-center gap-3 pt-2"
+                    onClick={(event) => event.stopPropagation()}
+                    onKeyDown={(event) => event.stopPropagation()}
+                  >
                     {project.demoVideo ? (
                       <button
                         type="button"
-                        onClick={() => setActiveVideo(project.demoVideo!)}
+                        onClick={viewProject}
                         className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-highlight"
                       >
                         View project
                         <ArrowUpRight size={16} />
                       </button>
                     ) : (
-                      <a
-                        href={project.liveHref}
-                        target={
-                          project.liveHref && isExternalHref(project.liveHref)
-                            ? "_blank"
-                            : undefined
-                        }
-                        rel={
-                          project.liveHref && isExternalHref(project.liveHref)
-                            ? "noreferrer"
-                            : undefined
-                        }
-                        className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-highlight"
+                      <button
+                        type="button"
+                        onClick={viewProject}
+                        className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-highlight"
                       >
                         View project
                         <ArrowUpRight size={16} />
-                      </a>
+                      </button>
                     )}
 
                     {showVisitSite && (
@@ -225,21 +303,25 @@ export function Projects() {
                       </a>
                     )}
 
-                    <a
-                      href={project.codeHref}
-                      aria-label={`${project.title} source code`}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
-                      target={
-                        project.codeHref.startsWith("http") ? "_blank" : undefined
-                      }
-                      rel={
-                        project.codeHref.startsWith("http")
-                          ? "noreferrer"
-                          : undefined
-                      }
-                    >
-                      <GitHubIcon size={18} />
-                    </a>
+                    {project.liveHref && project.codeHref && (
+                      <a
+                        href={project.codeHref}
+                        aria-label={`${project.title} source code`}
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
+                        target={
+                          project.codeHref.startsWith("http")
+                            ? "_blank"
+                            : undefined
+                        }
+                        rel={
+                          project.codeHref.startsWith("http")
+                            ? "noreferrer"
+                            : undefined
+                        }
+                      >
+                        <GitHubIcon size={18} />
+                      </a>
+                    )}
                   </div>
                 </div>
               </article>
