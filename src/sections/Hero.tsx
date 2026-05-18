@@ -19,13 +19,14 @@ const socialLinks = [
     label: "LinkedIn",
     icon: LinkedInIcon,
   },
+  // { href: "https://open.spotify.com/artist/0uetZYfTX6zFzEVNT06pNZ?si=BquGhs1lQ0aFfCUMEsBs8A", label: "Spotify", icon: SpotifyIcon },
 ]
 
 export const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden pt-7"
+      className="relative flex min-h-screen items-center overflow-hidden pt-12"
     >
       <div className="hero-gradient absolute inset-0" />
       <div className="absolute inset-0 bg-[linear-gradient(var(--color-border)_1px,transparent_1px),linear-gradient(90deg,var(--color-border)_1px,transparent_1px)] bg-[size:72px_72px] opacity-30" />
@@ -40,14 +41,15 @@ export const Hero = () => {
                 Available for Work
               </span>
               <div className="space-y-6">
-              <h1 className="max-w-4xl font-serif text-5xl leading-[0.95] tracking-tight text-headline md:text-7xl lg:text-8xl">
+              <h1 className="max-w-4xl font-serif text-6xl leading-[0.95] tracking-tight text-headline sm:text-7xl md:text-7xl lg:text-8xl">
                 Dylan Crawte
               </h1>
-              <h1 className="max-w-4xl font-serif text-5xl leading-[1.1] tracking-tight text-headline md:text-4xl lg:text-4xl">
-                AI Engineering. Computational Neuroscience. Mobile & Web Development
-              </h1>
-              <p className="max-w-2xl text-lg leading-8 text-muted-foreground md:text-xl">
-                Passionate about building intuitive systems that solve real world problems.
+              <h2 className="max-w-lg font-serif text-xl leading-snug tracking-tight text-headline sm:text-2xl md:text-4xl">
+                Software & Platform Engineering. EEG & NeuroTech. Mobile & Web Development.
+              </h2>
+         
+              <p className="max-w-xl text-lg leading-8 text-muted-foreground md:text-xl">
+                Currently working in the AI team at International Airlines Group. Msc Neuroscience graduate. Passionate programmer and music producer outside of work.
               </p>
             </div>
             </div>
@@ -116,6 +118,7 @@ export const Hero = () => {
               </div>
             </div>
           </div>
+          <div className='pb-12'></div>
         </div>
 
         <div className="mt-20 rounded-2xl border border-border bg-card/60 px-4 py-8 sm:px-6">

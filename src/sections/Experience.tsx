@@ -12,81 +12,99 @@ type ExperienceItem = {
 
 const experiences: ExperienceItem[] = [
   {
-    role: "AI Operations Engineer",
-    company: "International Airlines Group",
+    role: "Platform Engineer Associate",
+    company: "International Airlines Group Transform · London / Barcelona",
     period: "Aug 2025 - Present",
     description:
-      "Designing and maintaining platforms to support the Cognitive Automation Factory (CAF) and UiPath automation platforms at IAG, British Airways, Vueling and more.",
+      "IAG Transform is the central strategic and operational department for IAG and its airlines (including British Airways, Vueling and more operating companies), driving modernization, efficiency and cost reduction across the group.",
     achievements: [
-      "Building & Maintaining Network and Compute Infrastructure",
-      "Created guardrails around AI-assisted outputs so teams can move faster without losing quality.",
-      "Connected product, support, and delivery workflows with clear handoffs and reporting.",
+      "Maintaining scalable cloud infrastructure using Terraform, ECS, GitHub Actions CI/CD pipelines and CloudWatch observability for prod, dev and UAT internal developer environments.",
+      "Contributing to the IaC pipeline automating golden AMI builds for developer EC2 compute, and to the Lambda Python codebase to improve systems networking reliability and performance.",
+      "Supporting developers through IAM and UiPath access management, debugging agentic automation workflows (AWS Bedrock and Copilot Studio), and maintaining internal platform documentation.",
     ],
-    technologies: ["AWS", "UiPath", "Python", "Terraform", "Bedrock"],
+    technologies: [
+      "Terraform",
+      "AWS ECS",
+      "GitHub Actions",
+      "CloudWatch",
+      "Python",
+      "Lambda",
+      "AWS Bedrock",
+      "UiPath",
+    ],
   },
   {
-    role: "Software Engineer",
-    company: "International Airlines Group",
+    role: "Data Engineer Associate",
+    company: "International Airlines Group Transform · London / Barcelona",
     period: "Aug 2024 - Aug 2025",
     description:
-      "Building pipelines to turn millions of events and data points into detailed actionable insights, for internal metrics dashboards.",
+      "Contributed to the Engineering Metrics Platform, turning high-volume engineering telemetry into actionable insights for internal stakeholders.",
     achievements: [
-      "Developed accessible, reusable UI patterns for customer-facing and internal products.",
-      "Improved maintainability by simplifying state, component boundaries, and deployment paths.",
-      "Worked across design, data, and engineering conversations to keep implementation grounded in user needs.",
+      "Processed millions of events and data points from engineering tooling into actionable insights via SQL, AWS Athena and Power BI dashboards.",
+      "Orchestrated ETL pipelines with AWS Glue and Python / TypeScript Lambdas to transform and load data into Athena, enabling near-real-time updates to Power BI dashboards.",
+      "Designed and maintained consistent data models and schemas to normalise high-volume telemetry ingested from multiple engineering tool APIs (e.g. GitHub, Snyk).",
     ],
-    technologies: ["TypeScript", "SQL", "Python", "Node.js", "AWS"],
-  },
-  {
-    role: "Freelance Mobile & Web Developer",
-    company: "Self-employed",
-    period: "Ongoing",
-    description:
-      "Outside of work I am a freelance mobile and web developer, building custom software solutions for businesses. See my projects below.",
-    achievements: [
-      "Built a custom software solution for a client.",
-      "Implemented a custom software solution for a client.",
-      "Implemented a custom software solution for a client.",
+    technologies: [
+      "SQL",
+      "AWS Athena",
+      "Power BI",
+      "AWS Glue",
+      "Python",
+      "TypeScript",
+      "Lambda",
     ],
-    technologies: ["React", "TypeScript", "SQL", "Python", "Node.js"],
   },
   {
     role: "Co-founder & Product Owner",
-    company: "Go43 Ltd",
-    period: "Ongoing",
+    company: "Go43 Ltd · London, England",
+    period: "Mar 2024 - Present",
     description:
-      "Co-founded Go43 Ltd, a digital marketing agency that gives social media influencers free access to live music events in exchange for content of the night.",
+      "Digital marketing platform startup focused on social media marketing campaigns and live music gigs.",
     achievements: [
-      "Developed a custom software solution for a client.",
-      "Implemented a custom software solution for a client.",
-      "Implemented a custom software solution for a client.",
+      "Own the end-to-end lifecycle of a full-stack mobile platform with hundreds of users, featuring events from Universal Music Group labels and acts such as Post Malone.",
+      "Shipped and published the app on the Apple App Store, managing product delivery and roadmap with Trello.",
     ],
-    technologies: ["React", "TypeScript", "SQL", "Python", "Node.js"],
+    technologies: ["React Native", "Express", "Node.js", "MongoDB", "Trello"],
+  },
+  
+  {
+    role: "Postgraduate EEG Researcher",
+    company:
+      "University of Bristol · Neuroscience, Physiology and Pharmacology",
+    period: "Aug 2022 - Jul 2023",
+    description:
+      "Research into closed-loop vibrotactile stimulation (VTS) as a non-invasive neuromodulation therapy for dystonia within the sensorimotor cortex.",
+    achievements: [
+      "Investigated suppression of pathogenic alpha/mu oscillations (8–13 Hz) using closed-loop VTS as a non-invasive neuromodulation therapy for dystonia.",
+      "Recorded and pre-processed raw 32-channel EEG data using an ANT Neuro system, including manual artefact rejection, HFA polarity normalisation and signal conditioning for spectral analysis.",
+      "Built MATLAB analysis pipelines for power spectral density estimation (Pwelch), Fourier transforms, ERP extraction and oscillatory alignment, producing publication-quality visualisations of group-averaged neural data.",
+      "Applied statistical analysis in SPSS and R (repeated measures ANOVA, Wilcoxon signed-rank tests, Greenhouse–Geisser correction, Cohen's d) to validate closed-loop VTS efficacy across experimental conditions.",
+    ],
+    technologies: ["MATLAB", "SPSS", "R", "EEG", "ANT Neuro"],
   },
   {
     role: "Peer Review Manager",
     company: "Editorial Office / British Medical Journal",
-    period: "Oct 2021 - Apr 2024",
+    period: "Oct 2021 - Apr 2023",
     description:
-      "Peer reviewed medical research papers for the British Medical Journal, one of the world's leading medical journals.",
+      "Publishing technology services company providing end-to-end peer review workflow management for leading academic life science journals.",
     achievements: [
-      "Developed a custom software solution for a client.",
-      "Implemented a custom software solution for a client.",
-      "Implemented a custom software solution for a client.",
+      "Managed high-volume peer review workflows for BMJ journals via ScholarOne.",
+      "Assessed submissions to identify relevant peer reviewers, building broad familiarity with biomedical and clinical research literature.",
+      "Supported editorial administration for manuscript submissions, ensuring accurate processing and workflow compliance across the peer review pipeline.",
     ],
+    technologies: ["ScholarOne"],
   },
   {
-    role: "Postgraduate EEG Researcher",
-    company: "University of Bristol",
-    period: "Aug 2022 - July 2023",
+    role: "Website & App Developer",
+    company: "Freelance",
+    period: "Ongoing",
     description:
-      "Postgraduate research in Brain Computer Interfaces (BCI), EEG and Dystonia.",
+      "Working with companies closer to my personal interests to help build their vision into reality.",
     achievements: [
-      "Developed a custom software solution for a client.",
-      "Implemented a custom software solution for a client.",
-      "Implemented a custom software solution for a client.",
+      "Currently building a streaming platform for up and coming artists in the UK - Sonar Presents.",
     ],
-    technologies: ["Python", "MatLab"],
+    technologies: ["React Native", "Express", "Node.js", "MongoDB", "Trello"],
   },
 ]
 

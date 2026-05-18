@@ -17,15 +17,15 @@ const highlights = [
   },
   {
     icon: GraduationCapIcon,
-    title: "MSc Neuroscience",
+    title: "Neuroscience & NeuroTech",
     description:
-      "BCI research, and industry experience with the British Medical Journal",
+      "Postgraduate research with BCI and EEG technologies. Academic publishing experience with the British Medical Journal.",
   },
   {
     icon: Lightbulb,
-    title: "Product Minded",
+    title: "Entrepreneurial & Product Minded",
     description:
-      "Ownership of projects outside of work, utilising management tools to oversee end to end delivery.",
+      "Experience founding a tech focused start up, and managing the end to end delivery of multiple products.",
   },
 ]
 

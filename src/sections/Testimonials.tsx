@@ -5,6 +5,7 @@ type Testimonial = {
   name: string
   role: string
   email?: string
+  image?: string
 }
 
 const testimonials: Testimonial[] = [
@@ -13,19 +14,16 @@ const testimonials: Testimonial[] = [
       "It is a real pleasure to work with Dylan as he brings our company's vision to life. With clear communication, honesty and great timekeeping, the entire process has been (and continues to be) professional and stress-free",
     name: "Russel Phillips",
     role: "Sonar Presents",
-    email: "russell@sonarpresents.com",
+    email: "russ@sonarpresents.com",
+    image: "/Russel-headshot.png",
   },
   {
     quote:
-      "He balances the product detail with the engineering detail, which makes the end result feel polished without becoming overcomplicated.",
-    name: "Engineering partner",
-    role: "Frontend delivery",
-  },
-  {
-    quote:
-      "The best part of working with Dylan is the clarity. He makes the next step obvious and keeps the work moving.",
-    name: "Operations lead",
-    role: "AI operations process",
+      "Dylan has demonstrated strong initiative and adaptability. He has been proactive in learning on the go, quickly picking up new processes and asking thoughtful questions to deepen his understanding. His commitment to continuous improvement is evident through self-study. This approach shows a genuine eagerness to develop skills and contribute effectively to the team. Overall, Dylan is making excellent progress and shows great potential for future growth.",
+    name: "Keon White",
+    role: "Automation Engineer",
+    email: "keon.white@iaggbs.com",
+    image: "/Keon-headshot.png",
   },
 ]
 
@@ -62,15 +60,23 @@ export function Testimonials() {
               </p>
 
               <div className="mt-8 flex items-center gap-4 border-t border-border pt-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary font-semibold text-foreground">
-                  {testimonial.name.charAt(0)}
-                </div>
+                {testimonial.image ? (
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="h-12 w-12 shrink-0 rounded-full object-cover"
+                  />
+                ) : (
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary font-semibold text-foreground">
+                    {testimonial.name.charAt(0)}
+                  </div>
+                )}
                 <div>
                   <h3 className="font-semibold text-foreground">
                     {testimonial.name}
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    {testimonial.role}
+                    {testimonial.email ?? testimonial.role}
                   </p>
                 </div>
               </div>

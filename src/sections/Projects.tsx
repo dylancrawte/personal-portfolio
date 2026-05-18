@@ -61,18 +61,18 @@ const projects: Project[] = [
     image: "/projects/ios_appstore.png",
   },
   {
-    title: "Dystonia & EEG Project",
+    title: "Closed-Loop BCI & Neuromodulation (Postgraduate Research)",
     summary:
-      "My Postgraduate Research Project, investigating a novel vibrotactile stimulation treatment for the motor-neurone disease Dystonia.",
-    tags: ["Python", "MatLab"],
+      "Exploring the effects of closed-loop vibrotactile stimulation (VTS) as a non-invasive neuromodulation therapy for dystonia, investigating the suppression of pathogenic alpha/mu oscillations (8-13Hz) in the sensorimotor cortex.",
+    tags: ["EEG", "BCI", "Python", "MatLab"],
     liveHref: "https://docs.google.com/document/d/1aQYzz2IorrR8ID_A65q7HJQEpLXdgpDm/edit?usp=drive_link&ouid=102871082817885578561&rtpof=true&sd=true",
     image: "/projects/eeg-dylan.png",
   },
   {
     title: "Neuro Imager",
     summary:
-      "An open source tool for exploring cortical brain maps. It includes the tools to map data from the Human Connectome Project (HCP) and other datasets, and includes some studies I have investigated into!",
-    tags: ["Python", "MatLab"],
+      "An open source tool for exploring cortical brain maps. It includes the tools to map data from the Human Connectome Project (HCP) and other datasets, and includes some studies I am interested in.",
+    tags: ["Python"],
     liveHref: "https://github.com/dylancrawte/Neuro-Imager/blob/main/README.md",
     codeHref: "https://github.com/dylancrawte/Neuro-Imager/blob/main/README.md",
     image: "/projects/hcp_gradients_cerebro.png",
@@ -91,7 +91,7 @@ const projects: Project[] = [
   {
     title: "Music Portfolio",
     summary:
-      "My website for my music project.",
+      "My website for my music project. I have neary 100,000 total streams across streaming platforms, and have tracks featured in Spotify's Editorial Playlists.",
     tags: ["React", "Tailwind CSS", "Vite"],
     liveHref: "https://crawta.vercel.app/",
     codeHref: "https://github.com/dylancrawte/crawta",
@@ -104,6 +104,8 @@ const projects: Project[] = [
     tags: ["React", "Tailwind CSS", "Vite", "TypeScript"],
     liveHref: "https://github.com/dylancrawte/personal-portfolio",
     codeHref: "https://github.com/dylancrawte/personal-portfolio",
+    image: "/projects/this-website.jpeg",
+    imageFit: "contain",
   },
 ]
 
@@ -136,7 +138,6 @@ function canViewProject(project: Project) {
 export function Projects() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
-  const { ref: gridRef, isVisible: gridVisible } = useInView<HTMLDivElement>()
 
   useEffect(() => {
     if (!activeVideo) return
@@ -180,8 +181,8 @@ export function Projects() {
           </div>
         </div>
 
-        <div ref={gridRef} className="mt-14 grid gap-6 lg:grid-cols-3">
-          {projects.map((project) => {
+        <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-3">
+          {projects.map((project, index) => {
             const showVisitSite =
               project.demoVideo &&
               project.liveHref &&
@@ -190,23 +191,27 @@ export function Projects() {
             const viewProject = () => openViewProject(project, setActiveVideo)
 
             return (
-              <article
+              <ProjectsReveal
                 key={project.title}
-                role={canViewProject(project) ? "button" : undefined}
-                tabIndex={canViewProject(project) ? 0 : undefined}
-                onClick={canViewProject(project) ? viewProject : undefined}
-                onKeyDown={
-                  canViewProject(project)
-                    ? (event) => {
-                        if (event.key === "Enter" || event.key === " ") {
-                          event.preventDefault()
-                          viewProject()
-                        }
-                      }
-                    : undefined
-                }
-                className={`about-reveal group cursor-pointer overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${gridVisible ? "is-visible" : ""}`}
+                delayMs={index * 60}
+                className="h-full"
               >
+                <article
+                  role={canViewProject(project) ? "button" : undefined}
+                  tabIndex={canViewProject(project) ? 0 : undefined}
+                  onClick={canViewProject(project) ? viewProject : undefined}
+                  onKeyDown={
+                    canViewProject(project)
+                      ? (event) => {
+                          if (event.key === "Enter" || event.key === " ") {
+                            event.preventDefault()
+                            viewProject()
+                          }
+                        }
+                      : undefined
+                  }
+                  className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                >
                 <div
                   className={`relative aspect-[4/3] overflow-hidden bg-surface ${project.imageFit === "contain" ? "bg-background" : ""}`}
                 >
@@ -232,18 +237,16 @@ export function Projects() {
                   )}
                 </div>
 
-                <div className="space-y-5 p-6">
-                  <div>
-                    <h3 className="mt-2 text-2xl font-semibold text-foreground">
-                      {project.title}
-                    </h3>
-                  </div>
+                <div className="flex flex-1 flex-col gap-5 p-6">
+                  <h3 className="text-2xl font-semibold text-foreground">
+                    {project.title}
+                  </h3>
 
-                  <p className="leading-7 text-muted-foreground">
+                  <p className="flex-1 leading-7 text-muted-foreground">
                     {project.summary}
                   </p>
 
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex min-h-[4.5rem] flex-wrap content-start gap-2">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
@@ -255,7 +258,7 @@ export function Projects() {
                   </div>
 
                   <div
-                    className="flex flex-wrap items-center gap-3 pt-2"
+                    className="mt-auto flex min-h-[2.75rem] flex-wrap items-center gap-3"
                     onClick={(event) => event.stopPropagation()}
                     onKeyDown={(event) => event.stopPropagation()}
                   >
@@ -324,7 +327,8 @@ export function Projects() {
                     )}
                   </div>
                 </div>
-              </article>
+                </article>
+              </ProjectsReveal>
             )
           })}
         </div>
